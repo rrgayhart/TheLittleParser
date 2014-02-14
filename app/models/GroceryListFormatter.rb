@@ -30,7 +30,6 @@ def self.normal
   'Poppy seeds',
   'Rosemary',
   'Sage',
-  'Salt',
   'Sesame seeds',
   'Tarragon',
   'Thyme',
@@ -110,6 +109,7 @@ def self.normal
   'Garlic',
   'Grapes',
   'Lemons',
+  'Bacon',
   'Lettuce',
   'Limes',
   'Melons',
@@ -124,13 +124,19 @@ def self.normal
   'rice wine vinegar',
   'sesame oil',
   'hoisin sauce',
-  'scallion',
+  'Scallion',
   'Tomatoes']
+end
+
+def self.standard
+  [
+    'Salt'
+  ]
 end
 
   def self.check_name(string)
     array = normal.select do |ingredient|
-      string.downcase.include?(ingredient.downcase)
+      string.downcase.singularize.include?(ingredient.downcase.singularize)
     end
     array.first
   end
