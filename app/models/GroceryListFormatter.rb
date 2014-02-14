@@ -159,7 +159,7 @@ end
 
   def self.check_secondary(string)
     secondary.select do |ingredient|
-      string.downcase.include?(ingredient.downcase.pluralize)
+      string.downcase.include?(ingredient.downcase.pluralize) ||
       string.downcase.include?(ingredient.downcase)
     end.first
   end
