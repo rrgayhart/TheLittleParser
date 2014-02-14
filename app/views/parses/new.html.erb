@@ -1,6 +1,17 @@
+<div class="row"><br></div>
 <%= form_for(@parse) do |f| %>
-  <%= f.label :raw_ingredient %>
-  <%= f.text_field :raw_ingredient %>
-
-  <%= f.submit %>
+  <fieldset>
+    <legend>Raw Ingredient</legend>
+    <div class="large-6 columns">
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <%= f.text_field :raw_ingredient %>
+        </div>
+      <div class="small-2 columns">
+        <%= f.submit 'Parse', :class => 'button postfix' %>
+      </div>
+    </div>
+  </fieldset>
 <% end %>
+
+

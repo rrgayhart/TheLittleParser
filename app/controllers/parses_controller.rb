@@ -9,7 +9,7 @@ class ParsesController < ApplicationController
     @raw_ingredient = @parse[:raw_ingredient]
     array = Parse.new(@raw_ingredient)
     @answer = array.display_answer
-    render 'index'
+    render 'show'
   end
 
 end
