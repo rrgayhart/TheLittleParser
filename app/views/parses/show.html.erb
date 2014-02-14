@@ -3,8 +3,12 @@
 <ul class="pricing-table">
   <li class="title">Ingredient</li>
   <li class="price"><%= @answer.tag %></li>
+  <% if @answer.quantity %>
+    <li class="bullet-item"><%= @answer.quantity %></li>
+  <% end %>
+  <% if @answer.measurement %>
+    <li class="bullet-item"><%= @answer.measurement %></li>
+  <% end %>
   <li class="description"><%= @answer.raw_ingredient %></li>
-  <li class="bullet-item"><%= @answer.quantity %></li>
-  <li class="bullet-item"><%= @answer.measurement %></li>
   <li class="cta-button"><a class="button" href="/parses/new">Parse Another Ingredient</a></li>
 </ul>
