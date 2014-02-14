@@ -19,7 +19,8 @@ def self.normal
   'Fennel',
   'Five-spice powder',
   'Garlic powder',
-  'Ginger',
+  'Fresh Ginger',
+  'Powdered Ginger',
   'Marjoram',
   'Mint',
   'Mustard',
@@ -27,6 +28,8 @@ def self.normal
   'Pearl Onion',
   'Red Onion',
   'Sweet Onion',
+  'Agave Syrup',
+  'Maple Syrup',
   'Oregano',
   'Paprika',
   'cayenne',
@@ -85,7 +88,6 @@ def self.normal
   'Yogurt',
   'Water',
   'Coffee',
-  'Juice',
   'Soda Pop',
   'Sports Drinks',
   'Tea',
@@ -117,7 +119,7 @@ def self.normal
   'Lemons',
   'Bacon',
   'Lettuce',
-  'Limes',
+  'Lime',
   'Melons',
   'Mushrooms',
   'Nectarines',
@@ -141,7 +143,10 @@ def self.secondary
     'Cloves',
     'Pepper',
     'Pork',
-    'Onion'
+    'Juice',
+    'Onion',
+    'Syrup',
+    'Ginger'
   ]
 end
 
