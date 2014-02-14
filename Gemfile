@@ -29,6 +29,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 group :production do
+  gem 'rails_12factor'
   gem 'pg'
 end
 
