@@ -2,12 +2,14 @@ class GroceryListFormatter
 
 def self.normal
   ['Allspice', 
+  'Black Peppercorns',
   'Arrowroot starch',
   'Basil',
-  'Bay leaves',
+  'Bay Leaves',
   'Chili powder',
   'Cinnamon',
-  'garlic',
+  'Garlic',
+  'Red Wine Vinegar',
   'Coriander',
   'Cream of tartar',
   'Cumin',
@@ -128,9 +130,10 @@ def self.normal
   'Tomatoes']
 end
 
-def self.standard
+def self.secondary
   [
-    'Salt'
+    'Salt',
+    'Cloves'
   ]
 end
 
@@ -138,7 +141,17 @@ end
     array = normal.select do |ingredient|
       string.downcase.singularize.include?(ingredient.downcase.singularize)
     end
-    array.first
+    if array.any?
+      array.first
+    else
+      check_secondary(string)
+    end
+  end
+
+  def self.check_secondary(string)
+    array = secondary.select do |ingredient|
+      string.downcase.singularize.include?(ingredient.downcase.singularize)
+    end.first
   end
 
 end
