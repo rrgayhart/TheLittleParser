@@ -53,7 +53,7 @@ class Parse
   def check_secondary_measurements
     secondary_measurements.select do |measure|
       raw_ingredient.downcase.include?(measure.downcase)
-    end.first.strip
+    end.first.try(:strip)
   end
 
   def acceptable_measurements
