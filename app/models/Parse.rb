@@ -40,15 +40,34 @@ class Parse
   end
 
   def get_measurement
-    raw_ingredient.downcase.split.select do |word|
-      acceptable_measurements.include?(word)
+    measurements = acceptable_measurements.select do |measure|
+      raw_ingredient.downcase.include?(measure.downcase)
+    end
+    if measurements.any?
+      answer = measurements.first
+    else
+      answer = check_secondary_measurements
+    end
+  end
+
+  def check_secondary_measurements
+    secondary_measurements.select do |measure|
+      raw_ingredient.downcase.include?(measure.downcase)
     end.first
   end
 
   def acceptable_measurements
-    ['teaspoon', 'teaspoons', 't', 'tsp', 'cup', 'cups', 'pound', 'pounds', 'tablespoon', 
-      'tablespoons', 'tbl', 'tbs', 'tbsp', 'ounce', 'ounces', 'oz', 'fl oz', 'pint', 'pints', 'quart', 'quarts',
-      'gallon', 'gallons', 'ml', 'liter', 'litre', 'l', 'dash']
+    ['teaspoon', 'teaspoons', ' t ', 'tsp', 'cup', 'cups', 'pound', 'pounds', 'tablespoon', 
+      'tablespoons', 'tbl', 'tbs', 'tbsp', 'ounce', 'ounces', ' oz ', 'fl oz', 'pint', 'pints', 'quart', 'quarts',
+      'gallon', 'gallons', ' ml ', 'liter', 'litre', ' l ', 'dash']
+  end
+
+  def secondary_measurements
+    ['strip', 'strips']
+  end
+
+  def pick_stuff
+
   end
 
 end
