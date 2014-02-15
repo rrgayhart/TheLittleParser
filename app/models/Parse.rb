@@ -30,7 +30,7 @@ class Parse
     end
     joined_qty = qtys.join(' ')
     if joined_qty.include?('(')
-      joined_qty = joined_qty.concat(')')
+      joined_qty = joined_qty.partition('(').first.strip
     end
     if joined_qty == ""
       return nil
@@ -44,7 +44,7 @@ class Parse
       raw_ingredient.downcase.include?(measure.downcase)
     end
     if measurements.any?
-      answer = measurements.first
+      answer = measurements.first.strip
     else
       answer = check_secondary_measurements
     end
@@ -53,17 +53,17 @@ class Parse
   def check_secondary_measurements
     secondary_measurements.select do |measure|
       raw_ingredient.downcase.include?(measure.downcase)
-    end.first
+    end.first.strip
   end
 
   def acceptable_measurements
-    ['teaspoon', 'teaspoons', ' t ', 'tsp', 'cup', 'cups', 'pound', 'pounds', 'tablespoon', 
-      'tablespoons', 'tbl', 'tbs', 'tbsp', 'ounce', 'ounces', ' oz ', 'fl oz', 'pint', 'pints', 'quart', 'quarts',
+    ['teaspoon', 'teaspoons', ' t ', 'tsp', ' cup ', 'cups', ' pound ', 'pounds', ' tablespoon ', 
+      'tablespoons', 'tbl', 'tbs', 'tbsp', 'ounce ', 'ounces', ' oz ', 'fl oz', ' pint ', 'pints', ' quart ', 'quarts',
       'gallon', 'gallons', ' ml ', 'liter', 'litre', ' l ', 'dash']
   end
 
   def secondary_measurements
-    ['strip', 'strips']
+    ['strip', 'strips', 'package', 'can ', 'cans', 'bunch ', 'bunches']
   end
 
   def pick_stuff

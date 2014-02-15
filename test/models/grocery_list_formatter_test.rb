@@ -15,6 +15,7 @@ class GroceryListFormatterTest < ActiveSupport::TestCase
     assert_equal "Agave Syrup", check_name('1 1/2 tsp agave syrup')
     assert_equal "Fresh Ginger", check_name('1-inch (3cm) piece fresh ginger, peeled and minced')
     assert_equal "Powdered Ginger", check_name('1-inch tsp powdered ginger')
+    assert_equal "Tofu", check_name("1 (12 ounce) package soft tofu, drained and cut into 1/2-inch cubes")
   end
 
   test "it handles odd pluralization" do
@@ -26,6 +27,16 @@ class GroceryListFormatterTest < ActiveSupport::TestCase
     assert_equal "Lime", check_name("juice from 2 limes")
   end
 
+  test "it handles veggies" do
+    assert_equal "Bean Sprouts", check_name("3 cups bean sprouts")
+    assert_equal "Watercress", check_name('1 bunch watercress, chopped')
+    assert_equal "Tomato", check_name('2 tomatoes, cubed')
+    assert_equal "Radish", check_name('1/4 cup Japanese pickled radish (optional)')
+  end
+
+  test "it handles meat" do
+    assert_equal "Tuna", check_name('2 (6 ounce) cans tuna, drained')
+  end
 
   def check_name(string)
     GroceryListFormatter.check_name(string)

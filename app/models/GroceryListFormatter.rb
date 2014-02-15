@@ -86,7 +86,7 @@ def self.normal
   'Sour Cream',
   'Pancetta',
   'Yogurt',
-  'Water',
+  'Watercress',
   'Coffee',
   'Soda Pop',
   'Sports Drinks',
@@ -128,12 +128,16 @@ def self.normal
   'Peaches',
   'Pears',
   'Plums',
-  'cornstarch',
-  'rice wine vinegar',
+  'Cornstarch',
+  'Rice Wine Vinegar',
   'sesame oil',
   'hoisin sauce',
   'Scallion',
-  'Tomatoes'
+  'Tomato',
+  'Bean Sprouts',
+  'Tofu',
+  'Tuna',
+  'Radish'
   ]
 end
 
@@ -146,7 +150,9 @@ def self.secondary
     'Juice',
     'Onion',
     'Syrup',
-    'Ginger'
+    'Ginger',
+    'Beans',
+    'Water'
   ]
 end
 
