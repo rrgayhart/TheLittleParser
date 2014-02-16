@@ -1,5 +1,3 @@
-require 'GroceryListFormatter'
-
 class Parse
   extend ActiveModel::Naming
   include ActiveModel::Conversion
@@ -8,66 +6,28 @@ class Parse
 
   def initialize(string)
     @raw_ingredient = string
-    @tag = ""
-    @measurement = ""
-    @quantity = ""
+    @tag = get_tag
+    @measurement = get_measurement
+    @quantity = get_quantity
   end
 
   def persisted?
     false
   end
 
-  def display_answer
-    @tag = GroceryListFormatter.check_name(raw_ingredient)
-    @measurement = get_measurement
-    @quantity = get_quantity
-    return self
+  def result
+    LittleRecipeParser::Parse.new(raw_ingredient)
+  end
+
+  def get_tag
+    result.tag
   end
 
   def get_quantity
-    qtys = raw_ingredient[0..8].split.select do |char|
-      char =~ /[[:digit:]]/
-    end
-    joined_qty = qtys.join(' ')
-    if joined_qty.include?('(')
-      joined_qty = joined_qty.partition('(').first.strip
-    end
-    if joined_qty == ""
-      return nil
-    else
-      joined_qty
-    end
+    result.quantity
   end
 
   def get_measurement
-    measurements = acceptable_measurements.select do |measure|
-      raw_ingredient.downcase.include?(measure.downcase)
-    end
-    if measurements.any?
-      answer = measurements.first.strip
-    else
-      answer = check_secondary_measurements
-    end
+    result.measurement
   end
-
-  def check_secondary_measurements
-    secondary_measurements.select do |measure|
-      raw_ingredient.downcase.include?(measure.downcase)
-    end.first.try(:strip)
-  end
-
-  def acceptable_measurements
-    ['teaspoon', 'teaspoons', ' t ', 'tsp', ' cup ', 'cups', ' pound ', 'pounds', ' tablespoon ', 
-      'tablespoons', 'tbl', 'tbs', 'tbsp', 'ounce ', 'ounces', ' oz ', 'fl oz', ' pint ', 'pints', ' quart ', 'quarts',
-      'gallon', 'gallons', ' ml ', 'liter', 'litre', ' l ', 'dash']
-  end
-
-  def secondary_measurements
-    ['strip', 'strips', 'package', 'can ', 'cans', 'bunch ', 'bunches']
-  end
-
-  def pick_stuff
-
-  end
-
 end

@@ -29,6 +29,4 @@ def method_quantity(string)
   parse.get_quantity
 end
 
-
-
 end
