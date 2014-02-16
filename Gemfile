@@ -12,12 +12,12 @@ gem 'foundation-rails'
 group :production do
   gem 'rails_12factor'
   gem 'pg'
-  #gem 'little-recipe-parser'
+  gem 'little-recipe-parser'
 end
 
 group :test, :development do
   gem 'sqlite3'
-  gem 'little-recipe-parser', path: '/Users/rrgayhart/sites/Projects/little-recipe-parser'
+  #gem 'little-recipe-parser', path: '/Users/rrgayhart/sites/Projects/little-recipe-parser'
 end
 
 group :doc do
