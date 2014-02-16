@@ -1,3 +1,9 @@
+PATH
+  remote: /Users/rrgayhart/sites/Projects/little-recipe-parser
+  specs:
+    little-recipe-parser (0.1.1)
+      activesupport
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -119,6 +125,7 @@ DEPENDENCIES
   foundation-rails
   jbuilder (~> 1.2)
   jquery-rails
+  little-recipe-parser!
   pg
   rails (= 4.0.2)
   rails_12factor

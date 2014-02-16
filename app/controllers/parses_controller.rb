@@ -7,10 +7,9 @@ class ParsesController < ApplicationController
   end
 
   def create
-    @parse = params[:parse]
-    @raw_ingredient = @parse[:raw_ingredient]
-    array = Parse.new(@raw_ingredient)
-    @answer = array.display_answer
+    parse = params[:parse]
+    raw_ingredient = parse[:raw_ingredient]
+    @answer = LittleRecipeParser::Parse.new(raw_ingredient)
     respond_to do |format|
       format.html { render 'show' }
       format.json { render :json => @answer}
